@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 
 public class ActiveGapActivity extends BaseActivity {
 
-    private MutableLiveData<String> mutableLiveData = new MutableLiveData<>();
+    private static MutableLiveData<String> mutableLiveData = new MutableLiveData<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,5 +39,11 @@ public class ActiveGapActivity extends BaseActivity {
         super.onStop();
         System.out.println("ActiveGapActivity onStop called");
         mutableLiveData.setValue("onStop");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mutableLiveData.setValue("onDestroy");
     }
 }
